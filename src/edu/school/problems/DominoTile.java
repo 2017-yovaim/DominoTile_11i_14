@@ -53,6 +53,29 @@ public class DominoTile {
 		}
 		return false;
 	}
+	
+	public boolean isApplicable(DominoTile tileToCompare, int direction) {
+		boolean isApplicable = false;
+		if(direction == DominoTable.LEFT) {
+			if(this.getSecondSquare() == tileToCompare.getFirstSquare()) {
+				isApplicable = true;
+			}
+			else if(this.getFirstSquare() == tileToCompare.getFirstSquare()) {
+				this.swapSquares();
+				isApplicable = true;
+			}
+		}
+		else if(direction == DominoTable.RIGHT) {
+			if(this.getFirstSquare() == tileToCompare.getSecondSquare()) {
+				isApplicable = true;
+			}
+			else if(this.getSecondSquare() == tileToCompare.getSecondSquare()) {
+				this.swapSquares();
+				isApplicable = true;
+			}
+		}
+		return isApplicable;
+	}
 
 	/*public String toString() {
 		final int ROWS = 3;
