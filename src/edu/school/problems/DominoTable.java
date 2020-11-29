@@ -14,16 +14,14 @@ public class DominoTable {
 	public boolean addLeft(DominoTile tile) {
 		if (tilesIndex == TILES - 1) {
 			return false;
-		}
-		else if (tile.isApplicable(dominoTable[0], LEFT) == true) {
-			for(int i = tilesIndex; i > 0; i--) {
-				dominoTable[i - 1] = dominoTable[i];
+		} else if (tile.isApplicable(dominoTable[0], LEFT) == true) {
+			for (int i = tilesIndex; i > 0; i--) {
+				dominoTable[i] = dominoTable[i - 1];
 			}
 			dominoTable[0] = tile;
 			tilesIndex++;
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 		// algorithm here - if applicable, add it to the beginning of the array and
@@ -32,15 +30,13 @@ public class DominoTable {
 	}
 
 	public boolean addRight(DominoTile tile) {
-		if(tilesIndex == TILES - 1) {
+		if (tilesIndex == TILES - 1) {
 			return (false);
-		}
-		else if(tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true){
+		} else if (tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true) {
 			dominoTable[tilesIndex + 1] = tile;
 			tilesIndex++;
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 		// algorithm here - if applicable, add it to the end of the current elements of

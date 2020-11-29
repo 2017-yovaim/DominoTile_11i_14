@@ -77,15 +77,107 @@ public class DominoTile {
 		return isApplicable;
 	}
 
-	/*public String toString() {
-		final int ROWS = 3;
-		final int COLS = 6;
-		char[][] tile = new char[ROWS][COLS];
-		for (int i = 0; i < ROWS; i++) {
-			for (int j = 0; j < COLS; j++) {
-				
+	public String toString() {
+		String result = "";
+		result += this.firstLine(1);
+		result += this.firstLine(2);
+		result += "\n";
+		result += this.secondLine(1);
+		result += this.secondLine(2);
+		result += "\n";
+		result += this.thirdLine(1);
+		result += this.thirdLine(2);
+		result += "\n";
+		return result;
+	}
+	
+	public String firstLine(int squareIndex) {
+		String firstLine = "";
+		if(squareIndex == 1) {
+			if(this.firstSquare == 0 || this.firstSquare == 1) {
+				firstLine = "   ";
+			}
+			else if(this.firstSquare == 2 ||this.firstSquare == 3) {
+				firstLine = "*  ";
+			}
+			else if(this.firstSquare == 4 || this.firstSquare == 5) {
+				firstLine = "* *";
+			}
+			else {
+				firstLine = "***";
 			}
 		}
+		else {
+			if(this.secondSquare == 0 || this.secondSquare == 1) {
+				firstLine = "   ";
+			}
+			else if(this.secondSquare == 2 ||this.secondSquare == 3) {
+				firstLine = "*  ";
+			}
+			else if(this.secondSquare == 4 || this.secondSquare == 5) {
+				firstLine = "* *";
+			}
+			else {
+				firstLine = "***";
+			}
+		}
+		return firstLine;
 	}
-	*/
+	
+	public String secondLine(int squareIndex) {
+		String secondLine = "";
+		if(squareIndex == 1) {
+			if(this.firstSquare == 0 || this.firstSquare == 2 || this.firstSquare == 4 || this.firstSquare == 6) {
+				secondLine = "   ";
+			}
+			else if(this.firstSquare == 1 || this.firstSquare == 5 || this.firstSquare == 3) {
+				secondLine = " * ";
+			}
+		}
+		else {
+			if(this.secondSquare == 0 || this.secondSquare == 2 || this.secondSquare == 4 || this.secondSquare == 6) {
+				secondLine = "   ";
+			}
+			else if(this.secondSquare == 1 || this.secondSquare == 5 || this.secondSquare == 3) {
+				secondLine = " * ";
+			}
+		}
+		
+		return secondLine;
+	}
+	
+	public String thirdLine(int squareIndex) {
+		String thirdLine = "";
+		if(squareIndex == 1) {
+			if(this.firstSquare == 0 || this.firstSquare == 1) {
+				thirdLine = "   ";
+			}
+			else if(this.firstSquare == 2 || this.firstSquare == 3) {
+				thirdLine = "  *";
+			}
+			else if(this.firstSquare == 4 || this.firstSquare == 5) {
+				thirdLine = "* *";
+			}
+			else {
+				thirdLine = "***";
+			}
+		}
+		else {
+			if(this.secondSquare == 0 || this.secondSquare == 1) {
+				thirdLine = "   ";
+			}
+			else if(this.secondSquare == 2 || this.secondSquare == 3) {
+				thirdLine = "  *";
+			}
+			else if(this.secondSquare == 4 || this.secondSquare == 5) {
+				thirdLine = "* *";
+			}
+			else {
+				thirdLine = "***";
+			}
+		}
+		
+		return thirdLine;
+	}
+	
 }
