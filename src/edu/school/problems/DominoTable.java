@@ -1,9 +1,10 @@
 package edu.school.problems;
 
-public class DominoTable {
+public class DominoTable implements TableEventListener{
 	private DominoTile[] dominoTable;
-	private final int TILES = 28;
 	private int tilesIndex = 0;
+	private TableEventListener listener;
+	private final int TILES = 28;
 	final static int LEFT = 0;
 	final static int RIGHT = 1;
 
@@ -20,6 +21,10 @@ public class DominoTable {
 			}
 			dominoTable[0] = tile;
 			tilesIndex++;
+			if(this.listener != null)
+			{
+				this.listener.onTableChanged(this);
+			}
 			return true;
 		} else {
 			return false;
@@ -35,6 +40,9 @@ public class DominoTable {
 		} else if (tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true) {
 			dominoTable[tilesIndex + 1] = tile;
 			tilesIndex++;
+			if(this.listener != null) {
+				this.listener.onTableChanged(this);
+			}
 			return true;
 		} else {
 			return false;
@@ -50,5 +58,16 @@ public class DominoTable {
 				break;
 			System.out.print(dominoTable[i].toString());
 		}
+	}
+	
+	public void addTableEventListener(TableEventListener listener)
+	{
+		this.listener = listener;
+	}
+
+	@Override
+	public void onTableChanged(DominoTable table) {
+		// TODO Auto-generated method stub
+		//not sure what is supposed to happen here
 	}
 }
