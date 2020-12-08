@@ -11,6 +11,11 @@ public class DominoTable implements TableEventListener{
 	public DominoTable() {
 		dominoTable = new DominoTile[TILES];
 	}
+	
+	public DominoTile[] getDominoTable()
+	{
+		return this.dominoTable;
+	}
 
 	public boolean addLeft(DominoTile tile) {
 		if (tilesIndex == TILES - 1) {
