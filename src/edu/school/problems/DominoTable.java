@@ -1,6 +1,6 @@
 package edu.school.problems;
 
-public class DominoTable implements TableEventListener{
+public class DominoTable{
 	private DominoTile[] dominoTable;
 	private int tilesIndex = 0;
 	private TableEventListener listener;
@@ -70,9 +70,4 @@ public class DominoTable implements TableEventListener{
 		this.listener = listener;
 	}
 
-	@Override
-	public void onTableChanged(DominoTable table) {
-		// TODO Auto-generated method stub
-		//not sure what is supposed to happen here
-	}
 }
