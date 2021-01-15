@@ -55,8 +55,8 @@ public class DominoTile {
 	}
 	
 	public boolean isApplicable(DominoTile tileToCompare, int direction) {
-		boolean isApplicable = false;
-		if(direction == DominoTable.LEFT) {
+		//boolean isApplicable = false;
+		/*if(direction == DominoTable.LEFT) {
 			if(this.getSecondSquare() == tileToCompare.getFirstSquare()) {
 				isApplicable = true;
 			}
@@ -75,6 +75,8 @@ public class DominoTile {
 			}
 		}
 		return isApplicable;
+		*/
+		return true;
 	}
 
 	public String toString() {
