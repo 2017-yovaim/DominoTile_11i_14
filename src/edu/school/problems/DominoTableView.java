@@ -31,10 +31,5 @@ public class DominoTableView extends JComponent
 		return;
 	}
 	
-	public void paintTile(JFrame w, DominoTile t)
-	{
-		JPanel tile = new JPanel();
-		
-	}
 
 }
