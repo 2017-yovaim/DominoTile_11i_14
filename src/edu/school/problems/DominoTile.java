@@ -54,29 +54,81 @@ public class DominoTile {
 		return false;
 	}
 	
-	public boolean isApplicable(DominoTile tileToCompare, int direction) {
-		//boolean isApplicable = false;
-		/*if(direction == DominoTable.LEFT) {
-			if(this.getSecondSquare() == tileToCompare.getFirstSquare()) {
+	public boolean isApplicable(DominoTile tileToCompare, int direction) 
+	{
+		
+		boolean isApplicable = false;
+		if(direction == DominoTable.LEFT)
+		{
+			if(tileToCompare == null)
+			{
+				return false;
+			}
+			else if(this.getFirstSquare() == tileToCompare.getSecondSquare())
+			{
 				isApplicable = true;
 			}
-			else if(this.getFirstSquare() == tileToCompare.getFirstSquare()) {
+			else if(this.getFirstSquare() == tileToCompare.getFirstSquare())
+			{
+				tileToCompare.swapSquares();
+				isApplicable = true;
+			}
+			else
+			{
+				isApplicable = false;
+			}
+		}
+		else
+		{
+			if(tileToCompare == null)
+				return false;
+			else if(this.getSecondSquare() == tileToCompare.getFirstSquare())
+			{
+				isApplicable = true;
+			}
+			else if(this.getSecondSquare() == tileToCompare.getSecondSquare())
+			{
+				tileToCompare.swapSquares();
+				isApplicable = true;
+			}
+			else
+			{
+				isApplicable = false;
+			}
+		}
+		
+		return isApplicable;
+		/*boolean isApplicable = false;
+		if(direction == DominoTable.LEFT) 
+		{
+			if(tileToCompare == null)
+				return false;
+			if(this.getSecondSquare() == tileToCompare.getFirstSquare()) 
+			{
+				isApplicable = true;
+			}
+			else if(this.getFirstSquare() == tileToCompare.getFirstSquare()) 
+			{
 				this.swapSquares();
 				isApplicable = true;
 			}
 		}
-		else if(direction == DominoTable.RIGHT) {
-			if(this.getFirstSquare() == tileToCompare.getSecondSquare()) {
+		else if(direction == DominoTable.RIGHT) 
+		{
+			if(tileToCompare == null)
+				return false;
+			if(this.getFirstSquare() == tileToCompare.getSecondSquare()) 
+			{
 				isApplicable = true;
 			}
-			else if(this.getSecondSquare() == tileToCompare.getSecondSquare()) {
+			else if(this.getSecondSquare() == tileToCompare.getSecondSquare()) 
+			{
 				this.swapSquares();
 				isApplicable = true;
 			}
 		}
 		return isApplicable;
 		*/
-		return true;
 	}
 
 	public String toString() {

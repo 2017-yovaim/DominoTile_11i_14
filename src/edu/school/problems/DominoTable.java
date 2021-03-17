@@ -17,11 +17,16 @@ public class DominoTable{
 		return this.dominoTable;
 	}
 
-	public boolean addLeft(DominoTile tile) {
-		if (tilesIndex == TILES - 1) {
+	public boolean addLeft(DominoTile tile) 
+	{
+		if (tilesIndex > TILES - 2) 
+		{
 			return false;
-		} else if (tile.isApplicable(dominoTable[0], LEFT) == true) {
-			for (int i = tilesIndex; i > 0; i--) {
+		} 
+		else if (tile.isApplicable(dominoTable[0], LEFT) == true) 
+		{
+			for (int i = tilesIndex; i > 0; i--) 
+			{
 				dominoTable[i] = dominoTable[i - 1];
 			}
 			dominoTable[0] = tile;
@@ -31,7 +36,9 @@ public class DominoTable{
 				this.listener.onTableChanged(this);
 			}
 			return true;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 		// algorithm here - if applicable, add it to the beginning of the array and
@@ -39,17 +46,24 @@ public class DominoTable{
 
 	}
 
-	public boolean addRight(DominoTile tile) {
-		if (tilesIndex == TILES - 1) {
+	public boolean addRight(DominoTile tile) 
+	{
+		if (tilesIndex > TILES - 2) 
+		{
 			return (false);
-		} else if (tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true) {
+		} 
+		else if (tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true) 
+		{
 			dominoTable[tilesIndex + 1] = tile;
 			tilesIndex++;
-			if(this.listener != null) {
+			if(this.listener != null) 
+			{
 				this.listener.onTableChanged(this);
 			}
 			return true;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 		// algorithm here - if applicable, add it to the end of the current elements of
@@ -57,8 +71,10 @@ public class DominoTable{
 		// (tilesIndex) and tilexIndex++
 	}
 
-	public void print() {
-		for (int i = 0; i < TILES; i++) {
+	public void print() 
+	{
+		for (int i = 0; i < TILES; i++) 
+		{
 			if (dominoTable[i] == null)
 				break;
 			System.out.print(dominoTable[i].toString());
