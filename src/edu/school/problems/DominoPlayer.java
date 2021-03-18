@@ -18,7 +18,8 @@ public class DominoPlayer {
 		this.table = tableValue;
 	}
 
-	public String getNickname() {
+	public String getNickname() 
+	{
 		return this.nickname;
 	}
 
