@@ -34,7 +34,15 @@ public class DominoTableView extends JComponent
 		g.fill(new Rectangle2D.Double(0, 0, 500, 500));
 		int x = 60;
 		int y = 220;
-		for(DominoTile t : table.getDominoTable())
+		Iterator<DominoTile> it = table.getDominoTable().getIterator();
+		while(it.hasNext())
+		{
+			g.translate(x, y);
+			paintTile(g, it.next());
+			g.translate(-x,  -y);
+			x += 120;
+		}
+		/*for(DominoTile t : table.getDominoTable())
 		{
 			if(t == null)
 				continue;
@@ -42,7 +50,7 @@ public class DominoTableView extends JComponent
 			paintTile(g, t);
 			g.translate(-x,  -y);
 			x += 120;
-		}
+		}*/
 	}
 	
 	private void paintTile(Graphics2D g, DominoTile t)

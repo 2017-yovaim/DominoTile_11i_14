@@ -23,6 +23,7 @@ public class DominoGameTest extends JFrame
 		t.addLeft(new DominoTile(0, 6));
 		t.addRight(new DominoTile(2, 4));
 		
+		//t.print();
 		DominoTableView v = new DominoTableView(t);
 		
 		f.add(v, BorderLayout.CENTER);

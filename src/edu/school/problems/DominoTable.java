@@ -1,7 +1,7 @@
 package edu.school.problems;
 
 public class DominoTable{
-	private DominoTile[] dominoTable;
+	private Deck<DominoTile> dominoTable;
 	private int tilesIndex = 0;
 	private TableEventListener listener;
 	private final int TILES = 28;
@@ -9,10 +9,10 @@ public class DominoTable{
 	final static int RIGHT = 1;
 
 	public DominoTable() {
-		dominoTable = new DominoTile[TILES];
+		dominoTable = new Deck<>();
 	}
 	
-	public DominoTile[] getDominoTable()
+	public Deck<DominoTile> getDominoTable()
 	{
 		return this.dominoTable;
 	}
@@ -23,14 +23,22 @@ public class DominoTable{
 		{
 			return false;
 		} 
-		else if (tile.isApplicable(dominoTable[0], LEFT) == true) 
+		else if(dominoTable.isEmpty())
 		{
+			dominoTable.addLeft(tile);
+			return true;
+		}
+		else if (dominoTable.getLeft().isApplicable(tile, LEFT) == true) 
+		{
+			dominoTable.addLeft(tile);
+			/*
 			for (int i = tilesIndex; i > 0; i--) 
 			{
 				dominoTable[i] = dominoTable[i - 1];
 			}
 			dominoTable[0] = tile;
 			tilesIndex++;
+			*/
 			if(this.listener != null)
 			{
 				this.listener.onTableChanged(this);
@@ -52,10 +60,18 @@ public class DominoTable{
 		{
 			return (false);
 		} 
-		else if (tile.isApplicable(dominoTable[tilesIndex], RIGHT) == true) 
+		else if(dominoTable.isEmpty())
 		{
+			dominoTable.addRight(tile);
+			return true;
+		}
+		else if (dominoTable.getRight().isApplicable(tile, RIGHT) == true) 
+		{
+			dominoTable.addRight(tile);
+			/*
 			dominoTable[tilesIndex + 1] = tile;
 			tilesIndex++;
+			*/
 			if(this.listener != null) 
 			{
 				this.listener.onTableChanged(this);
@@ -73,12 +89,20 @@ public class DominoTable{
 
 	public void print() 
 	{
+		Iterator<DominoTile> it = dominoTable.getIterator();
+		while(it.hasNext())
+		{
+			DominoTile t = it.next();
+			System.out.print(t.toString());
+		}
+		/*
 		for (int i = 0; i < TILES; i++) 
 		{
 			if (dominoTable[i] == null)
 				break;
 			System.out.print(dominoTable[i].toString());
 		}
+		*/
 	}
 	
 	public void addTableEventListener(TableEventListener listener)
